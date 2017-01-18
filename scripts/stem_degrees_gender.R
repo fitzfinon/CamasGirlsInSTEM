@@ -1,5 +1,7 @@
 library(ggplot2)
 library(plyr)
+library(magrittr)
+library(dplyr)
 
 STEM_degrees_gender <- read.delim("~/Box Sync/workshops_talks/Camas STEM girls day/STEM_degrees_gender.txt")
 dat <- STEM_degrees_gender
@@ -32,9 +34,10 @@ levels(dat$gender)
 dat$gender <- factor(dat$gender, levels = c("Women", "Men"))
 levels(dat$gender)
 
-ggplot(dat, aes(x=factor(year), y=Percent, fill=gender)) + 
-  geom_bar(stat="identity", position="fill") +  #, aes(order=desc(Percent))
+
+  ggplot(dat %>% filter(gender == "Women"), aes(x=factor(year), y=Percent, fill=factor(year))) + 
+  geom_bar(stat="identity") +  #, aes(order=desc(Percent)) +
   facet_grid(.~ subject, scales="free_x", space="free") +
-  xlab("Year") +
-  scale_fill_discrete(name="Gender") +
   ggtitle("Gender Distribution of Bachelor's Degrees in Science and Engineering Disciplines")
+  scale_fill_brewer("Year", palette = "Set1") +
+  labs(x = NULL) +
