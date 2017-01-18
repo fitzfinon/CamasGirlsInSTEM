@@ -8,23 +8,23 @@ rm(STEM_degrees_gender)
 summary(dat)
 
 levels(dat$subject) <- 
-  c("Biological and \n Agricultural \n Sciences", 
-    "Computer \n Science", 
-    "Earth, \n Atmospheric,and \n Ocean Sciences",
+  c("Biological and\nAgricultural\nSciences", 
+    "Computer\nScience", 
+    "Earth,\nAtmospheric,\nOcean Sciences",
     "Engineering", 
     "Mathematics", 
-    "Physical \n Sciences", 
-    "Social Sciences \n and Psychology", 
+    "Physical\nSciences", 
+    "Social Sciences,\nPsychology", 
     "Statistics")
 
 dat$subject <- ordered(dat$subject,
-                       levels = c("Engineering", "Computer \n Science",
-                                  "Earth, \n Atmospheric,and \n Ocean Sciences",
-                                  "Physical \n Sciences",
+                       levels = c("Engineering", "Computer\nScience",
+                                  "Earth,\nAtmospheric,\nOcean Sciences",
+                                  "Physical\nSciences",
                                   "Mathematics", 
                                   "Statistics",
-                                  "Biological and \n Agricultural \n Sciences", 
-                                  "Social Sciences \n and Psychology"
+                                  "Biological and\nAgricultural\nSciences", 
+                                  "Social Sciences,\nPsychology"
                        ))
 
 levels(dat$gender)
