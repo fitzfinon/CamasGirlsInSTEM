@@ -35,6 +35,7 @@ dat$gender <- factor(dat$gender, levels = c("Women", "Men"))
 levels(dat$gender)
 
 
+G <-
   ggplot(dat %>% filter(gender == "Women"), aes(x=factor(year), y=Percent, fill=factor(year))) + 
   geom_bar(stat="identity") +  #, aes(order=desc(Percent)) +
   facet_grid(.~ subject, scales="free_x", space="free") +
@@ -43,3 +44,5 @@ levels(dat$gender)
   ggtitle("Percentage of Women with Bachelor Degrees\nin Science and Engineering Disciplines") +
   labs(x = NULL) +
   theme_bw() + theme(legend.position = "none")
+G
+ggsave("~/Projects/CamasGirlsInSTEM/figures/stem_degrees_women.svg", dpi = 300, width = 12, height = 8, units = "in")
