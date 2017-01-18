@@ -38,6 +38,8 @@ levels(dat$gender)
   ggplot(dat %>% filter(gender == "Women"), aes(x=factor(year), y=Percent, fill=factor(year))) + 
   geom_bar(stat="identity") +  #, aes(order=desc(Percent)) +
   facet_grid(.~ subject, scales="free_x", space="free") +
-  ggtitle("Gender Distribution of Bachelor's Degrees in Science and Engineering Disciplines")
   scale_fill_brewer("Year", palette = "Set1") +
+  scale_y_continuous(breaks = seq(0, 100, 10)) +
+  ggtitle("Percentage of Women with Bachelor Degrees\nin Science and Engineering Disciplines") +
   labs(x = NULL) +
+  theme_bw() + theme(legend.position = "none")
